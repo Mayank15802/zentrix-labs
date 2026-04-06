@@ -1,3 +1,8 @@
+---
+description: "Apply Next.js agent rules to the zentrix-labs workspace"
+applyTo: ["workspace:c:/Users/Mayank/zentrix-labs"]
+---
+
 <!-- BEGIN:nextjs-agent-rules -->
 # This is NOT the Next.js you know
 

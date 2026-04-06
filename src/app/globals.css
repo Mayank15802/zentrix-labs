@@ -1,26 +1,75 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #ffffff;
+  --accent: #0080ff;
+  --accent-glow: #00a2ff;
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(255, 255, 255, 0.08);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-accent: var(--accent);
+  --font-sans: var(--font-inter);
+  --font-outfit: var(--font-outfit);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/[0.03] border border-white/[0.08] backdrop-blur-xl;
+  }
+  
+  .glass-hover {
+    @apply hover:bg-white/[0.06] hover:border-white/[0.15] transition-all duration-500;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 15px rgba(0, 162, 255, 0.5);
+  }
+
+  .neon-border {
+    position: relative;
+    border-radius: inherit;
+  }
+
+  .neon-border::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(to right, #0080ff, #00ff80);
+    z-index: -1;
+    border-radius: inherit;
+    opacity: 0.2;
+    transition: opacity 0.3s;
+  }
+
+  .neon-border:hover::before {
+    opacity: 1;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2a2a2a;
 }
